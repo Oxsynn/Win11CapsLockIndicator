@@ -30,29 +30,6 @@ namespace CapsLockIndicator
             notifyIcon.Icon = trayIcon;
             notifyIcon.Visible = true;
 
-            /*
-            notifyIcon.Icon = CapsLockIndicator.Properties.Resources.GrayA;
-            notifyIcon.Visible = true;
-            */
-
-            /*
-            if (isCaps == true)
-            {
-                // string msg = "Caps is on.";
-                notifyIcon.Visible = false;
-                notifyIcon.Text = "Caps is on.";
-                this.notifyIcon.Icon = CapsLockIndicator.Properties.Resources.GreenA;
-                notifyIcon.Visible = true;
-            }
-
-            else
-            {
-                notifyIcon.Visible = false;
-                notifyIcon.Text = "Caps is off.";
-                this.notifyIcon.Icon = CapsLockIndicator.Properties.Resources.GrayA;
-                notifyIcon.Visible = true;
-            }
-            */
             updateIcon();
 
             async Task updateIcon()
