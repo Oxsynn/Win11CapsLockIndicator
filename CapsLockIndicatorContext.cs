@@ -1,35 +1,87 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace CapsLockIndicator
 {
     public class CapsLockIndicatorContext : ApplicationContext
     {
         NotifyIcon notifyIcon = new NotifyIcon();
+        bool isOn = true;
 
         public CapsLockIndicatorContext()
         {
-            //Initialize Icons
-            //Image RedX = Image.FromFile("C:\\Test\\Red X.png");
-            //Icon GrayA = new Icon("C:\\Test\\Gray A.ico");
-            //Icon GreenA = new Icon(".\\Green A.ico");
+            //Initialize ContextMenu
             ContextMenuStrip mainContext = new ContextMenuStrip();
-
 
             //ToolStripMenuItem replaced MenuItem
             ToolStripMenuItem exitMenuItem = new ToolStripMenuItem("Exit", CapsLockIndicator.Properties.Resources.RedX, new EventHandler(Exit));
             notifyIcon.Icon = CapsLockIndicator.Properties.Resources.GrayA;
             notifyIcon.ContextMenuStrip = mainContext;
             mainContext.Items.Add(exitMenuItem);
+
+            //check Windows Capslock
+            string msg;
+            Icon trayIcon = CapsLockIndicator.Properties.Resources.GrayA;
+            notifyIcon.Icon = trayIcon;
             notifyIcon.Visible = true;
+
+            /*
+            notifyIcon.Icon = CapsLockIndicator.Properties.Resources.GrayA;
+            notifyIcon.Visible = true;
+            */
+
+            /*
+            if (isCaps == true)
+            {
+                // string msg = "Caps is on.";
+                notifyIcon.Visible = false;
+                notifyIcon.Text = "Caps is on.";
+                this.notifyIcon.Icon = CapsLockIndicator.Properties.Resources.GreenA;
+                notifyIcon.Visible = true;
+            }
+
+            else
+            {
+                notifyIcon.Visible = false;
+                notifyIcon.Text = "Caps is off.";
+                this.notifyIcon.Icon = CapsLockIndicator.Properties.Resources.GrayA;
+                notifyIcon.Visible = true;
+            }
+            */
+            updateIcon();
+
+            async Task updateIcon()
+            {
+                while (isOn)
+                {
+                    bool isCaps = Control.IsKeyLocked(Keys.CapsLock);
+
+                    if (isCaps == true)
+                    {
+                        msg = "Caps is On";
+                        trayIcon = CapsLockIndicator.Properties.Resources.GreenA;
+                    }
+                    else
+                    {
+                        msg = "Caps is Off";
+                        trayIcon = CapsLockIndicator.Properties.Resources.GrayA;
+                    }
+                    notifyIcon.Icon = trayIcon;
+                    notifyIcon.Text = msg;
+                }
+            }
         }
 
 
         void Exit(object sender, EventArgs e)
         {
             //Removing Icon before Exit
+            isOn = false;
             notifyIcon.Visible = false;
             Application.Exit();
         }
