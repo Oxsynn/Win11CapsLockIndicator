@@ -8,25 +8,22 @@ namespace CapsLockIndicator
     public class CapsLockIndicatorContext : ApplicationContext
     {
         NotifyIcon notifyIcon = new NotifyIcon();
-        private System.Windows.Forms.ContextMenuStrip contextMenu;
 
         public CapsLockIndicatorContext()
         {
             //Initialize Icons
-            Image RedX = Image.FromFile(".\\Red X.png");
-            Icon GrayA = new Icon(".\\Gray A.png");
-            Icon GreenA = new Icon(".\\Green A.png");
+            //Image RedX = Image.FromFile("C:\\Test\\Red X.png");
+            //Icon GrayA = new Icon("C:\\Test\\Gray A.ico");
+            //Icon GreenA = new Icon(".\\Green A.ico");
             ContextMenuStrip mainContext = new ContextMenuStrip();
 
 
             //ToolStripMenuItem replaced MenuItem
-            ToolStripMenuItem exitMenuItem = new ToolStripMenuItem("Exit", RedX, new EventHandler(Exit));
-            notifyIcon.Icon = GrayA;
+            ToolStripMenuItem exitMenuItem = new ToolStripMenuItem("Exit", CapsLockIndicator.Properties.Resources.RedX, new EventHandler(Exit));
+            notifyIcon.Icon = CapsLockIndicator.Properties.Resources.GrayA;
             notifyIcon.ContextMenuStrip = mainContext;
             mainContext.Items.Add(exitMenuItem);
             notifyIcon.Visible = true;
-   
-
         }
 
 
