@@ -63,16 +63,6 @@ namespace CapsLockIndicator.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon GrayA {
-            get {
-                object obj = ResourceManager.GetObject("GrayA", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
-        /// </summary>
         internal static System.Drawing.Icon GreenA {
             get {
                 object obj = ResourceManager.GetObject("GreenA", resourceCulture);
@@ -87,6 +77,16 @@ namespace CapsLockIndicator.Properties {
             get {
                 object obj = ResourceManager.GetObject("RedX", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon WhiteA {
+            get {
+                object obj = ResourceManager.GetObject("WhiteA", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }
